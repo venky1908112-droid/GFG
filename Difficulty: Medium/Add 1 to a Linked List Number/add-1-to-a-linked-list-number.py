@@ -7,39 +7,37 @@ class Node:
 class Solution:
     def addOne(self,head):
         # code here
-        temp = head
-        length = 0
         nine = 0
+        temp = head
+        total_length = 0
         while temp:
-            length += 1
+            total_length += 1
             if temp.data == 9:
                 nine += 1
             else:
                 nine = 0
             temp = temp.next
-        if length == nine:
-            one = Node(1)
+        if nine == total_length:
             temp = head
             while temp:
                 temp.data = 0
                 temp = temp.next
-            one.next = head
-            head = one
-        elif nine:
+            node = Node(1)
+            node.next = head
+            head = node
+        elif nine == 0:
+            temp = head
+            while temp.next:
+                temp = temp.next
+            temp.data += 1
+        else:
             temp = head
             prev = None
-            for _ in range(length - nine):
+            for _ in range(total_length - nine):
                 prev = temp
                 temp = temp.next
             prev.data += 1
             while temp:
                 temp.data = 0
                 temp = temp.next
-        else:
-            temp = head
-            while temp.next:
-                temp = temp.next
-            temp.data += 1
         return head
-            
-        
