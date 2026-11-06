@@ -7,9 +7,9 @@ class Node:
 class Solution:
     def addOne(self,head):
         # code here
-        nine = 0
         temp = head
         total_length = 0
+        nine = 0
         while temp:
             total_length += 1
             if temp.data == 9:
@@ -22,9 +22,9 @@ class Solution:
             while temp:
                 temp.data = 0
                 temp = temp.next
-            node = Node(1)
-            node.next = head
-            head = node
+            one = Node(1)
+            one.next = head
+            head = one
         elif nine == 0:
             temp = head
             while temp.next:
