@@ -10,21 +10,20 @@ class Solution:
     def topView(self, root):
         if not root:
             return []
-        # code here
-        right = []
-        left = []
         q = deque()
+        left = []
+        right = []
         q.append((root, 0))
         while q:
             node, width = q.popleft()
-            if len(left) == width:
-                left.append(node.data)
-            if len(right) == -width:
-                right.append(node.data)
+            if len(left) == -width:
+                left.append((node.data))
+            if len(right) == width:
+                right.append((node.data))
             if node.left:
-                q.append((node.left, width + 1))
+                q.append((node.left, width - 1))
             if node.right:
-                q.append((node.right, width - 1))
+                q.append((node.right, width + 1))
         left.reverse()
         left.pop()
         return left + right
